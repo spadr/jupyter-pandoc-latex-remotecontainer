@@ -1,0 +1,45 @@
+{
+	"name": "JupyTex",
+	"dockerComposeFile": "docker-compose.yml",
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"oderwat.indent-rainbow",
+		"ms-toolsai.jupyter",
+		"james-yu.latex-workshop",
+		"nickfode.latex-formatter",
+		"taichi.vscode-textlint"
+	],
+	"service": "jupytex",
+	"settings": {
+		"terminal.integrated.shell": "/bin/bash",
+		"files.autoSave": "afterDelay",
+		"files.autoSaveDelay": 10000,
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"[python]": {
+			"editor.insertSpaces": true,
+			"editor.detectIndentation": true,
+			"editor.tabSize": 4
+		},
+		"python.linting.enabled": true,
+		"python.linting.lintOnSave": true,
+		"python.linting.pylintEnabled": false,
+		"python.linting.flake8Enabled": true,
+		"python.linting.flake8Args": [
+			"--max-line-length=119",
+			"--ignore=E203,W503,W504"
+		],
+		"python.formatting.provider": "black",
+		"python.formatting.blackArgs": [
+			"--line-length",
+			"119"
+		],
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		},
+	},
+	"workspaceFolder": "/home/jupytex",
+	"shutdownAction": "stopCompose"
+}

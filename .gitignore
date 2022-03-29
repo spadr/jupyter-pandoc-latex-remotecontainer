@@ -1,0 +1,11 @@
+.cache
+.gnupg
+.ipynb_checkpoints
+.ipython
+.jupyter
+.local
+.npm
+.ssh
+.virtual_documents
+.vscode-server
+.gitconfig
