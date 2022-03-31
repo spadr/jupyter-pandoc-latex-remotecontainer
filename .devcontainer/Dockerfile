@@ -12,11 +12,11 @@ RUN groupadd jupytex && useradd -m -u ${UID} jupytex -g jupytex
 #USER ${UID}
 
 # set timezone
-RUN apt-get update && apt-get upgrade -y && apt-get install -y tzdata
+RUN apt update && apt upgrade -y && apt install -y tzdata
 ENV TZ=Asia/Tokyo
 
 # install general app
-RUN apt-get install -y \
+RUN apt install -y \
   make \
   curl \
   wget \
@@ -27,15 +27,15 @@ RUN apt-get install -y \
 
 # install Node
 RUN curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash -
-RUN apt-get install -y nodejs
+RUN apt install -y nodejs
 
 # install Python
-#RUN apt-get install -y python3 python3-pip
+#RUN apt install -y python3 python3-pip
 ENV PYTHON_ROOT /usr
 ENV PATH $PYTHON_ROOT/bin:$PATH
 ENV PYENV_ROOT /usr/.pyenv
-RUN apt-get purge -y --auto-remove python3.8
-RUN apt-get install -y \
+RUN apt purge -y --auto-remove python3.8
+RUN apt update && apt install -y \
   build-essential \
   libssl-dev \
   zlib1g-dev \
@@ -55,10 +55,10 @@ RUN apt-get install -y \
   rm -rf $PYENV_ROOT
 
 # install LaTeX
-RUN apt-get update && apt install -y \
+RUN apt update && apt install -y \
   curl perl && \
   mkdir /tmp/install-tl-unx && \
-  curl -L https://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Source/install-tl-unx.tar.gz | \
+  curl -L http://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Source/install-tl-unx.tar.gz | \
   tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
   printf "%s\n" \
   "selected_scheme scheme-basic" \
@@ -72,7 +72,7 @@ RUN apt-get update && apt install -y \
   collection-fontsrecommended \
   collection-langjapanese \
   latexmk && \
-  apt-get clean && \
+  apt clean && \
   rm -rf /var/lib/apt/lists/*
 
 # add LaTeX modules
