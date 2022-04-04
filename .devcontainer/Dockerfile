@@ -16,7 +16,7 @@ RUN apt update && apt upgrade -y && apt install -y tzdata
 ENV TZ=Asia/Tokyo
 
 # install general app
-RUN apt install -y \
+RUN apt update && apt install -y \
   make \
   curl \
   wget \
@@ -30,7 +30,6 @@ RUN curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash -
 RUN apt install -y nodejs
 
 # install Python
-#RUN apt install -y python3 python3-pip
 ENV PYTHON_ROOT /usr
 ENV PATH $PYTHON_ROOT/bin:$PATH
 ENV PYENV_ROOT /usr/.pyenv
@@ -56,7 +55,7 @@ RUN apt update && apt install -y \
 
 # install LaTeX
 RUN apt update && apt install -y \
-  curl perl && \
+  perl && \
   mkdir /tmp/install-tl-unx && \
   curl -L http://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Source/install-tl-unx.tar.gz | \
   tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
@@ -72,6 +71,7 @@ RUN apt update && apt install -y \
   collection-fontsrecommended \
   collection-langjapanese \
   latexmk && \
+  tlmgr update --self --all && \
   apt clean && \
   rm -rf /var/lib/apt/lists/*
 
