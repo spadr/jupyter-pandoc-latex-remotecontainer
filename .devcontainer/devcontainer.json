@@ -8,7 +8,8 @@
 		"ms-toolsai.jupyter",
 		"james-yu.latex-workshop",
 		"nickfode.latex-formatter",
-		"taichi.vscode-textlint"
+		"taichi.vscode-textlint",
+		"znck.grammarly"
 	],
 	"service": "jupytex",
 	"settings": {
