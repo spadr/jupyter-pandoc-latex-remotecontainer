@@ -2,13 +2,18 @@ version: "3"
 
 services:
   jupytex:
-    build: .
+    build: devenv/.
+    #build: .
     environment:
       SHELL: "/bin/bash"
       HOME: "/home/jupytex"
     tty: true
     command: bash -c "sleep infinity && jupyter lab --ip=0.0.0.0 --port=8000 --allow-root --no-browser"
     volumes:
-      - ../:/home/jupytex
+      - userspace:/home/jupytex
+      - ../share_file:/home/jupytex/workspace/share
     ports:
       - "8000:8000"
+  
+volumes:
+    userspace:

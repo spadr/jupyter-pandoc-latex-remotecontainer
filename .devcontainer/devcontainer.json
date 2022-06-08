@@ -41,6 +41,6 @@
 			"source.organizeImports": true
 		},
 	},
-	"workspaceFolder": "/home/jupytex",
+	"workspaceFolder": "/home/jupytex/workspace",
 	"shutdownAction": "stopCompose"
 }

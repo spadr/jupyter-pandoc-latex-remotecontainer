@@ -1,0 +1,3 @@
+[submodule ".devcontainer/devenv"]
+	path = .devcontainer/devenv
+	url = git@github.com:spadr/jupyter-pandoc-latex.git
